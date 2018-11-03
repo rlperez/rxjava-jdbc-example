@@ -7,5 +7,5 @@ spring:
     show-sql: true
     database-platform: org.hibernate.dialect.DerbyDialect
   datasource:
-    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+    driver-class-name: org.apache.derby.jdbc.EmbeddedDriver
     url: jdbc:memory:derby:demo
