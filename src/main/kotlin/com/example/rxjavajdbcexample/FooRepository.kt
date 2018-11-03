@@ -10,9 +10,9 @@ class FooRepository(private val db: Database) {
 
     fun findAll(): Flux<Foo> {
         val fooFlowable: Flowable<Foo> =
-                db.select("select id, name from foo")
+                db.select("select f.id, f.name, f.bar_id, b.id, b.value from foo f, bar b where f.bar_id = b.id")
                         .get { resultSet ->
-                            Foo(resultSet.getInt(1), resultSet.getString(2))
+                            Foo(resultSet.getInt(1), resultSet.getString(2), Bar(resultSet.getInt(3), resultSet.getString(4)))
                         }
 
         return Flux.from(fooFlowable)

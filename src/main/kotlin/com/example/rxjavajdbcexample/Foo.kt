@@ -1,10 +1,7 @@
 package com.example.rxjavajdbcexample
 
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "foo")
-data class Foo(@Id val id: Int = 0, @Column val name: String = "")
+data class Foo(@Id val id: Int = 0, @Column val name: String = "", @OneToOne @JoinColumn(name = "bar_id") val bar: Bar)
